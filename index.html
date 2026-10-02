@@ -3,47 +3,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Antigravity SEO — Intelligence & Backlink Console</title>
+  <title>Breakout® Escape Rooms — SEO Intelligence & Backlink Console</title>
+  <link rel="icon" href="https://cms.breakout.in/uploads/images/sitesettings/favicon256x256_f634847e-1d9b-4ed0-ae6a-e9f4161af7ac.jpg" type="image/jpeg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-canvas: #090D15;
-      --bg-subtle: #0E1420;
-      --bg-surface: #141B2B;
-      --bg-surface-elevated: #1B2438;
-      --bg-surface-hover: #222E46;
+      /* Breakout Brand Tokens */
+      --breakout-gold: #F5A623;
+      --breakout-amber: #FF9900;
+      --breakout-amber-hover: #FFA726;
+      --breakout-red: #E50914;
+      --breakout-red-hover: #B71C1C;
+      --breakout-flame: #FF5722;
+      --breakout-yellow: #FFD166;
       
-      --border-subtle: #1F2B42;
-      --border-strong: #2D3E5E;
-      --border-accent: rgba(59, 130, 246, 0.4);
+      /* Dark Canvas & Cinematic Surfaces */
+      --bg-canvas: #07090D;
+      --bg-subtle: #0D1118;
+      --bg-surface: #121722;
+      --bg-surface-elevated: #181F2E;
+      --bg-surface-hover: #20283A;
       
-      --text-primary: #F8FAFC;
-      --text-secondary: #CBD5E1;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-strong: rgba(245, 166, 35, 0.28);
+      --border-accent: rgba(245, 166, 35, 0.55);
+      
+      --text-primary: #FFFFFF;
+      --text-secondary: #E2E8F0;
       --text-muted: #94A3B8;
-      --text-accent: #93C5FD;
+      --text-accent: #F5A623;
       
-      --accent-primary: #1D4ED8;
-      --accent-primary-hover: #1E40AF;
-      --accent-contrast: #FFFFFF;
+      --accent-primary: #F5A623;
+      --accent-primary-hover: #FF9900;
+      --accent-contrast: #07090D;
+      
+      --gradient-primary: linear-gradient(135deg, #FF9900 0%, #FF5722 100%);
+      --gradient-red: linear-gradient(135deg, #E50914 0%, #990000 100%);
+      --gradient-gold-subtle: linear-gradient(135deg, rgba(245, 166, 35, 0.16) 0%, rgba(255, 87, 34, 0.08) 100%);
       
       --status-emerald: #10B981;
       --status-emerald-bg: rgba(16, 185, 129, 0.14);
       --status-emerald-border: rgba(16, 185, 129, 0.35);
       
-      --status-amber: #F59E0B;
-      --status-amber-bg: rgba(245, 158, 11, 0.14);
-      --status-amber-border: rgba(245, 158, 11, 0.35);
+      --status-amber: #F5A623;
+      --status-amber-bg: rgba(245, 166, 35, 0.14);
+      --status-amber-border: rgba(245, 166, 35, 0.4);
       
-      --status-rose: #F43F5E;
-      --status-rose-bg: rgba(244, 63, 94, 0.14);
-      --status-rose-border: rgba(244, 63, 94, 0.35);
+      --status-rose: #E50914;
+      --status-rose-bg: rgba(229, 9, 20, 0.14);
+      --status-rose-border: rgba(229, 9, 20, 0.35);
       
       --status-sky: #38BDF8;
       --status-sky-bg: rgba(14, 165, 233, 0.14);
       --status-sky-border: rgba(14, 165, 233, 0.35);
       
+      --font-display: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       --font-mono: 'IBM Plex Mono', ui-monospace, "SF Mono", Menlo, monospace;
       
@@ -52,9 +68,10 @@
       --radius-lg: 14px;
       --radius-full: 9999px;
       
-      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
-      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-      --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.5);
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(0, 0, 0, 0.4);
+      --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.6);
+      --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.75);
+      --shadow-gold: 0 4px 14px rgba(0, 0, 0, 0.5);
     }
 
     * {
@@ -85,6 +102,10 @@
 
     body {
       background-color: var(--bg-canvas);
+      background-image: 
+        radial-gradient(ellipse at 50% 0%, rgba(245, 166, 35, 0.08) 0%, transparent 65%),
+        radial-gradient(ellipse at 90% 20%, rgba(229, 9, 20, 0.05) 0%, transparent 50%);
+      background-repeat: no-repeat;
       color: var(--text-primary);
       font-family: var(--font-sans);
       font-size: 14px;
@@ -93,6 +114,10 @@
       display: flex;
       flex-direction: column;
       -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3 {
+      font-family: var(--font-display);
     }
 
     .tabular-nums {
@@ -142,6 +167,60 @@
       border-bottom: 1px solid var(--border-subtle);
       flex-wrap: wrap;
       gap: 16px;
+    }
+
+
+    .brand-block {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-decoration: none;
+    }
+
+    .brand-logo-img {
+      height: 44px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+    }
+
+    .header-site-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .site-nav-link {
+      color: var(--text-secondary);
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+    .site-nav-link:hover {
+      color: var(--breakout-gold);
+      text-decoration: none;
+    }
+
+    .btn-breakout-visit {
+      background: var(--gradient-primary);
+      color: #FFFFFF;
+      padding: 8px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      box-shadow: var(--shadow-gold);
+      transition: all 0.15s ease;
+    }
+    .btn-breakout-visit:hover {
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.65);
+      transform: translateY(-1px);
+      text-decoration: none;
+      color: #FFFFFF;
     }
 
     .brand-block {
@@ -205,7 +284,7 @@
     .btn-secondary {
       background: var(--bg-surface);
       border: 1px solid var(--border-strong);
-      color: var(--text-primary);
+      color: var(--breakout-gold);
       padding: 8px 16px;
       border-radius: var(--radius-sm);
       font-size: 13px;
@@ -217,7 +296,8 @@
     }
     .btn-secondary:hover {
       background: var(--bg-surface-hover);
-      border-color: #3B5075;
+      border-color: var(--breakout-gold);
+      color: #FFFFFF;
     }
 
     /* Tab Navigation */
@@ -249,7 +329,7 @@
     }
 
     .tab-button.active {
-      background: var(--bg-surface-elevated);
+      background: var(--gradient-gold-subtle);
       color: var(--text-primary);
       border: 1px solid var(--border-strong);
       box-shadow: var(--shadow-sm);
@@ -263,8 +343,9 @@
       color: var(--text-secondary);
     }
     .tab-button.active .tab-counter {
-      background: var(--accent-primary);
-      color: var(--accent-contrast);
+      background: var(--breakout-gold);
+      color: #07090D;
+      font-weight: 700;
     }
 
     /* Content Views */
@@ -548,9 +629,9 @@
       border-color: var(--border-strong);
     }
     .pill-btn.active {
-      background: var(--bg-surface-elevated);
-      color: #93C5FD;
-      border-color: var(--accent-primary);
+      background: rgba(245, 166, 35, 0.16);
+      color: var(--breakout-gold);
+      border-color: var(--breakout-gold);
     }
 
     /* Backlink Data Table */
@@ -737,20 +818,23 @@
     }
 
     .btn-primary {
-      background: var(--accent-primary);
-      color: var(--accent-contrast);
+      background: var(--gradient-primary);
+      color: #FFFFFF;
       padding: 9px 18px;
       border-radius: var(--radius-sm);
       font-size: 13px;
-      font-weight: 600;
+      font-weight: 700;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      transition: background-color 0.15s ease;
+      transition: all 0.15s ease;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
     }
     .btn-primary:hover {
-      background: var(--accent-primary-hover);
-      color: var(--accent-contrast);
+      background: linear-gradient(135deg, #FFA726 0%, #FF6B35 100%);
+      color: #FFFFFF;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.65);
+      transform: translateY(-1px);
       text-decoration: none;
     }
 
@@ -830,24 +914,29 @@
     
     <!-- Top Nav Header -->
     <header class="top-nav">
-      <div class="brand-block">
-        <div class="brand-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-          </svg>
-        </div>
-        <div class="brand-titles">
-          <h1>Antigravity SEO Workspace</h1>
-          <p>Autonomous Search Engine Intelligence & Campaign Verification</p>
-        </div>
+      <div style="display: flex; align-items: center; gap: 28px; flex-wrap: wrap;">
+        <a href="https://breakout.in" target="_blank" rel="noopener" class="brand-block">
+          <img src="https://cms.breakout.in/uploads/images/sitesettings/logo_1c890d4b-2a39-4f5d-8f28-f1e987aab032.png" alt="Breakout® Escape Rooms" class="brand-logo-img">
+          <div class="brand-titles">
+            <h1>Breakout® Escape Rooms</h1>
+            <p>Organic Search Intelligence & Backlink Command Center</p>
+          </div>
+        </a>
+
+        <nav class="header-site-links" aria-label="Breakout Main Links">
+          <a href="https://breakout.in/#escape-rooms" target="_blank" rel="noopener" class="site-nav-link">Escape Rooms</a>
+          <a href="https://breakout.in/corporate" target="_blank" rel="noopener" class="site-nav-link">Corporate Outings</a>
+          <a href="https://breakout.in/birthdays" target="_blank" rel="noopener" class="site-nav-link">Birthdays & Parties</a>
+          <a href="https://breakout.in/contact" target="_blank" rel="noopener" class="site-nav-link">Venues (4 Centers)</a>
+        </nav>
       </div>
 
       <div class="nav-meta-actions">
         <div class="client-badge">
           <span class="client-status-dot"></span>
-          <span>Breakout® Bengaluru</span>
+          <span>Breakout® Official</span>
           <span style="color: var(--text-muted);">|</span>
-          <span class="tabular-nums" style="color: var(--text-muted);">October 2026</span>
+          <span class="tabular-nums" style="color: var(--text-muted);">4.9★ (13K+ Reviews)</span>
         </div>
 
         <button class="btn-secondary" onclick="exportDataJSON()">
@@ -856,6 +945,10 @@
           </svg>
           Export Deliverables
         </button>
+
+        <a href="https://breakout.in" target="_blank" rel="noopener" class="btn-breakout-visit">
+          Visit breakout.in ↗
+        </a>
       </div>
     </header>
 
@@ -965,7 +1058,7 @@
                   <span class="anchor-numbers tabular-nums">40% <span style="color:var(--text-muted);">(Target 40-50%)</span></span>
                 </div>
                 <div class="progress-track">
-                  <div class="progress-fill" style="width: 40%; background: #3B82F6;"></div>
+                  <div class="progress-fill" style="width: 40%; background: var(--gradient-primary);"></div>
                 </div>
               </div>
 
@@ -975,7 +1068,7 @@
                   <span class="anchor-numbers tabular-nums">40% <span style="color:var(--text-muted);">(Safe ≤40%)</span></span>
                 </div>
                 <div class="progress-track">
-                  <div class="progress-fill" style="width: 40%; background: #10B981;"></div>
+                  <div class="progress-fill" style="width: 40%; background: #FFD166;"></div>
                 </div>
               </div>
 
@@ -985,7 +1078,7 @@
                   <span class="anchor-numbers tabular-nums">20% <span style="color:var(--text-muted);">(Target 15-25%)</span></span>
                 </div>
                 <div class="progress-track">
-                  <div class="progress-fill" style="width: 20%; background: #0EA5E9;"></div>
+                  <div class="progress-fill" style="width: 20%; background: #38BDF8;"></div>
                 </div>
               </div>
 
@@ -995,7 +1088,7 @@
                   <span class="anchor-numbers tabular-nums" style="color: var(--status-emerald);">0% <span style="color:var(--text-muted);">(Safe ≤5%)</span></span>
                 </div>
                 <div class="progress-track">
-                  <div class="progress-fill" style="width: 0%; background: #F43F5E;"></div>
+                  <div class="progress-fill" style="width: 0%; background: #E50914;"></div>
                 </div>
               </div>
             </div>
@@ -1631,6 +1724,44 @@ Slide 11: Bibliography & Curated Bengaluru Venues Directory.</div>
       </div>
     </section>
 
+
+    <!-- Official Breakout Footer -->
+    <footer style="margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--border-strong); display: flex; flex-direction: column; gap: 20px;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 24px;">
+        <div style="max-width: 480px; display: flex; flex-direction: column; gap: 10px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <img src="https://cms.breakout.in/uploads/images/sitesettings/logo_1c890d4b-2a39-4f5d-8f28-f1e987aab032.png" alt="Breakout® Escape Rooms" style="height: 32px; width: auto;">
+            <span style="font-weight: 800; font-family: var(--font-display); font-size: 16px; color: #FFFFFF;">BREAKOUT®</span>
+          </div>
+          <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">
+            India's premier cinematic escape rooms, team outings, and birthday celebrations. Over 243,000+ players thrilled across 4 flagship centers in Bengaluru and Hyderabad.
+          </p>
+        </div>
+
+        <div style="display: flex; gap: 40px; flex-wrap: wrap;">
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <span style="font-size: 12px; font-weight: 700; color: var(--breakout-gold); text-transform: uppercase; letter-spacing: 0.05em;">Flagship Centers</span>
+            <a href="https://breakout.in/koramangala" target="_blank" rel="noopener" style="color: var(--text-secondary); font-size: 13px;">Koramangala 1st Block</a>
+            <a href="https://breakout.in/whitefield" target="_blank" rel="noopener" style="color: var(--text-secondary); font-size: 13px;">Whitefield Forum Shantiniketan</a>
+            <a href="https://breakout.in/jp-nagar" target="_blank" rel="noopener" style="color: var(--text-secondary); font-size: 13px;">JP Nagar 6th Phase</a>
+            <a href="https://breakout.in/hyderabad" target="_blank" rel="noopener" style="color: var(--text-secondary); font-size: 13px;">Hyderabad Jubilee Hills</a>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <span style="font-size: 12px; font-weight: 700; color: var(--breakout-gold); text-transform: uppercase; letter-spacing: 0.05em;">Programs</span>
+            <a href="https://breakout.in/corporate" target="_blank" rel="noopener" style="color: var(--text-secondary); font-size: 13px;">Corporate Team Building</a>
+            <a href="https://breakout.in/birthdays" target="_blank" rel="noopener" style="color: var(--text-secondary); font-size: 13px;">Birthdays & Celebrations</a>
+            <a href="https://breakout.in/corporate/connect-l-n-d" target="_blank" rel="noopener" style="color: var(--text-secondary); font-size: 13px;">L&D Gamified Training</a>
+            <a href="https://breakout.in/contact" target="_blank" rel="noopener" style="color: var(--text-secondary); font-size: 13px;">Contact Support</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding-top: 16px; border-top: 1px solid var(--border-subtle); font-size: 12px; color: var(--text-muted);">
+        <span>© 2026 Breakout Experiences Pvt. Ltd. All rights reserved.</span>
+        <span>SEO Portfolio & Authority Tracking • Breakout® Organic Search Command</span>
+      </div>
+    </footer>
   </div>
 
   <script>
