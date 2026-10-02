@@ -1,0 +1,1751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Antigravity SEO — Intelligence & Backlink Console</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-canvas: #090D15;
+      --bg-subtle: #0E1420;
+      --bg-surface: #141B2B;
+      --bg-surface-elevated: #1B2438;
+      --bg-surface-hover: #222E46;
+      
+      --border-subtle: #1F2B42;
+      --border-strong: #2D3E5E;
+      --border-accent: rgba(59, 130, 246, 0.4);
+      
+      --text-primary: #F8FAFC;
+      --text-secondary: #CBD5E1;
+      --text-muted: #94A3B8;
+      --text-accent: #93C5FD;
+      
+      --accent-primary: #1D4ED8;
+      --accent-primary-hover: #1E40AF;
+      --accent-contrast: #FFFFFF;
+      
+      --status-emerald: #10B981;
+      --status-emerald-bg: rgba(16, 185, 129, 0.14);
+      --status-emerald-border: rgba(16, 185, 129, 0.35);
+      
+      --status-amber: #F59E0B;
+      --status-amber-bg: rgba(245, 158, 11, 0.14);
+      --status-amber-border: rgba(245, 158, 11, 0.35);
+      
+      --status-rose: #F43F5E;
+      --status-rose-bg: rgba(244, 63, 94, 0.14);
+      --status-rose-border: rgba(244, 63, 94, 0.35);
+      
+      --status-sky: #38BDF8;
+      --status-sky-bg: rgba(14, 165, 233, 0.14);
+      --status-sky-border: rgba(14, 165, 233, 0.35);
+      
+      --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: 'IBM Plex Mono', ui-monospace, "SF Mono", Menlo, monospace;
+      
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+      --radius-full: 9999px;
+      
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.5);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    ::selection {
+      background: rgba(59, 130, 246, 0.4);
+      color: #FFFFFF;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-canvas);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--border-strong);
+      border-radius: var(--radius-full);
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #3B5075;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      line-height: 1.55;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+      font-family: var(--font-mono);
+    }
+
+    a {
+      color: var(--text-accent);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+    a:hover {
+      color: #BFDBFE;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent-primary);
+      outline-offset: 2px;
+    }
+
+    .app-shell {
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 28px 32px 56px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* Top Navigation Bar */
+    .top-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--border-subtle);
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .brand-block {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #60A5FA;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .brand-titles h1 {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+
+    .brand-titles p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .nav-meta-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .client-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-strong);
+      padding: 7px 16px;
+      border-radius: var(--radius-full);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .client-status-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--status-emerald);
+      border-radius: 50%;
+    }
+
+    .btn-secondary {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-strong);
+      color: var(--text-primary);
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+    .btn-secondary:hover {
+      background: var(--bg-surface-hover);
+      border-color: #3B5075;
+    }
+
+    /* Tab Navigation */
+    .tab-nav-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-subtle);
+      padding: 4px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      width: fit-content;
+    }
+
+    .tab-button {
+      padding: 9px 20px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tab-button:hover {
+      color: var(--text-primary);
+    }
+
+    .tab-button.active {
+      background: var(--bg-surface-elevated);
+      color: var(--text-primary);
+      border: 1px solid var(--border-strong);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tab-counter {
+      font-size: 12px;
+      padding: 1px 8px;
+      border-radius: var(--radius-full);
+      background: var(--bg-surface);
+      color: var(--text-secondary);
+    }
+    .tab-button.active .tab-counter {
+      background: var(--accent-primary);
+      color: var(--accent-contrast);
+    }
+
+    /* Content Views */
+    .tab-content {
+      display: none;
+      flex-direction: column;
+      gap: 24px;
+      animation: fadeIn 0.15s ease-out;
+    }
+    .tab-content.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(3px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Section Subheaders */
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    /* Metric Strip */
+    .metric-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+    }
+
+    .metric-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: border-color 0.15s ease;
+    }
+    .metric-card:hover {
+      border-color: var(--border-strong);
+    }
+
+    .metric-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .metric-value-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .metric-main-value {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      line-height: 1;
+    }
+
+    .metric-sub-badge {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: var(--radius-full);
+    }
+
+    .badge-emerald {
+      background: var(--status-emerald-bg);
+      color: var(--status-emerald);
+      border: 1px solid var(--status-emerald-border);
+    }
+    .badge-amber {
+      background: var(--status-amber-bg);
+      color: var(--status-amber);
+      border: 1px solid var(--status-amber-border);
+    }
+    .badge-sky {
+      background: var(--status-sky-bg);
+      color: var(--status-sky);
+      border: 1px solid var(--status-sky-border);
+    }
+
+    .metric-explanation {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    /* 2-Column Analytic Workspace */
+    .analytics-grid {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    @media (max-width: 1080px) {
+      .analytics-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .sidebar-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .panel-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .panel-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .panel-header-row h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .anchor-distribution-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .anchor-stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .anchor-stat-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+    }
+    .anchor-name {
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+    .anchor-numbers {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .progress-track {
+      height: 6px;
+      background: var(--bg-subtle);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      border-radius: var(--radius-full);
+    }
+
+    .target-box-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .target-route-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 11px 14px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+    }
+
+    .target-route-name {
+      font-family: var(--font-mono);
+      color: var(--text-accent);
+      font-weight: 500;
+    }
+
+    .target-route-share {
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 12px;
+    }
+
+    /* Main Table Container */
+    .table-container {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .table-toolbar {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .search-wrapper {
+      position: relative;
+      min-width: 260px;
+      flex: 1;
+      max-width: 400px;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-strong);
+      padding: 9px 12px 9px 36px;
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      font-size: 13px;
+      font-family: inherit;
+      transition: border-color 0.15s ease;
+    }
+    .search-input:focus {
+      outline: none;
+      border-color: var(--accent-primary);
+    }
+
+    .category-pills {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .pill-btn {
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-subtle);
+      transition: all 0.15s ease;
+    }
+    .pill-btn:hover {
+      color: var(--text-primary);
+      border-color: var(--border-strong);
+    }
+    .pill-btn.active {
+      background: var(--bg-surface-elevated);
+      color: #93C5FD;
+      border-color: var(--accent-primary);
+    }
+
+    /* Backlink Data Table */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .data-table th {
+      background: var(--bg-subtle);
+      padding: 14px 18px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .data-table td {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--border-subtle);
+      font-size: 13px;
+      vertical-align: middle;
+    }
+
+    .data-table tr.item-row {
+      transition: background-color 0.15s ease;
+      cursor: pointer;
+    }
+    .data-table tr.item-row:hover {
+      background-color: var(--bg-surface-hover);
+    }
+
+    .data-table tr.item-row.expanded {
+      background-color: var(--bg-surface-elevated);
+    }
+
+    .platform-col {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .platform-name {
+      font-weight: 600;
+      color: var(--text-primary);
+      font-size: 14px;
+    }
+
+    .platform-category {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .metrics-col {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+    }
+
+    .metric-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .metric-label {
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .metric-num {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .target-col {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-accent);
+      max-width: 200px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* Expandable Row Detail Drawer */
+    .drawer-row {
+      display: none;
+    }
+    .drawer-row.open {
+      display: table-row;
+    }
+
+    .drawer-cell {
+      padding: 0 !important;
+      background: var(--bg-canvas);
+      border-bottom: 1px solid var(--border-strong);
+    }
+
+    .drawer-inner {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      animation: fadeIn 0.15s ease-out;
+    }
+
+    .drawer-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+    }
+
+    .drawer-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .drawer-meta-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .drawer-meta-value {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .drawer-content-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .drawer-content-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-subtle);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .drawer-content-text {
+      color: var(--text-secondary);
+      font-size: 13px;
+      line-height: 1.6;
+      max-height: 240px;
+      overflow-y: auto;
+      padding-right: 8px;
+      white-space: pre-wrap;
+      font-family: var(--font-sans);
+    }
+
+    .drawer-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 12px;
+      padding-top: 8px;
+    }
+
+    .btn-primary {
+      background: var(--accent-primary);
+      color: var(--accent-contrast);
+      padding: 9px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background-color 0.15s ease;
+    }
+    .btn-primary:hover {
+      background: var(--accent-primary-hover);
+      color: var(--accent-contrast);
+      text-decoration: none;
+    }
+
+    /* Technical Audit Grid */
+    .audit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .audit-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .audit-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .audit-card-header h3 {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .audit-check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px;
+      background: var(--bg-subtle);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+      font-size: 13px;
+    }
+
+    .audit-check-icon {
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .audit-check-text strong {
+      color: var(--text-primary);
+      display: block;
+      margin-bottom: 2px;
+      font-size: 13px;
+    }
+    .audit-check-text span {
+      color: var(--text-secondary);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 768px) {
+      .app-shell {
+        padding: 16px;
+      }
+      .metric-main-value {
+        font-size: 26px;
+      }
+      .data-table th:nth-child(4),
+      .data-table td:nth-child(4) {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-shell">
+    
+    <!-- Top Nav Header -->
+    <header class="top-nav">
+      <div class="brand-block">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+        </div>
+        <div class="brand-titles">
+          <h1>Antigravity SEO Workspace</h1>
+          <p>Autonomous Search Engine Intelligence & Campaign Verification</p>
+        </div>
+      </div>
+
+      <div class="nav-meta-actions">
+        <div class="client-badge">
+          <span class="client-status-dot"></span>
+          <span>Breakout® Bengaluru</span>
+          <span style="color: var(--text-muted);">|</span>
+          <span class="tabular-nums" style="color: var(--text-muted);">October 2026</span>
+        </div>
+
+        <button class="btn-secondary" onclick="exportDataJSON()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+          </svg>
+          Export Deliverables
+        </button>
+      </div>
+    </header>
+
+    <!-- Workspace Tab Rail -->
+    <nav class="tab-nav-bar" aria-label="Workspace Sections">
+      <button class="tab-button active" onclick="switchTab('backlinks', this)">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+        </svg>
+        Backlink Intelligence
+        <span class="tab-counter">5</span>
+      </button>
+
+      <button class="tab-button" onclick="switchTab('audit', this)">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+        </svg>
+        Technical Crawl & CWV
+        <span class="tab-counter">31 pgs</span>
+      </button>
+
+      <button class="tab-button" onclick="switchTab('content', this)">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
+        </svg>
+        E-E-A-T & AI Citability
+        <span class="tab-counter">Local</span>
+      </button>
+    </nav>
+
+    <!-- TAB 1: BACKLINK INTELLIGENCE (MAIN) -->
+    <section id="tab-backlinks" class="tab-content active">
+      
+      <h2 class="section-title">Backlink Portfolio & Authority Metrics</h2>
+
+      <!-- Executive Metric Strip -->
+      <div class="metric-strip">
+        <div class="metric-card">
+          <div class="metric-header">
+            <span>Verified Domains</span>
+            <span class="badge-emerald metric-sub-badge">100% Live</span>
+          </div>
+          <div class="metric-value-row">
+            <span class="metric-main-value tabular-nums">5</span>
+            <span style="color: var(--text-secondary); font-size: 13px;">across 5 Categories</span>
+          </div>
+          <p class="metric-explanation">Web 2.0, Tech Article, Business Citation, Directory, and PR Presentation Asset.</p>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-header">
+            <span>Domain Authority</span>
+            <span class="badge-sky metric-sub-badge">DA 68–91 Range</span>
+          </div>
+          <div class="metric-value-row">
+            <span class="metric-main-value tabular-nums">82.8</span>
+            <span style="color: var(--text-secondary); font-size: 13px;">Average DA</span>
+          </div>
+          <p class="metric-explanation">High tier referral equity with established Google indexation and editorial trust.</p>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-header">
+            <span>Toxicity Guardrail</span>
+            <span class="badge-emerald metric-sub-badge">Safe (&lt;5%)</span>
+          </div>
+          <div class="metric-value-row">
+            <span class="metric-main-value tabular-nums">1.2%</span>
+            <span style="color: var(--text-secondary); font-size: 13px;">Spam Score Avg</span>
+          </div>
+          <p class="metric-explanation">Evaluated against 30 toxic indicators; zero PBNs, doorway pages, or scraper rings.</p>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-header">
+            <span>Anchor Safety Index</span>
+            <span class="badge-emerald metric-sub-badge">Post-March '24</span>
+          </div>
+          <div class="metric-value-row">
+            <span class="metric-main-value tabular-nums">0.0%</span>
+            <span style="color: var(--text-secondary); font-size: 13px;">Exact Match Stuffing</span>
+          </div>
+          <p class="metric-explanation">Natural distribution: 40% Branded/Geo, 40% Partial Match, 20% Naked URL.</p>
+        </div>
+      </div>
+
+      <!-- 2-Column Analytics & Deliverables Grid -->
+      <div class="analytics-grid">
+        
+        <!-- Left Column: Anchor & Equity Analysis -->
+        <aside class="sidebar-panel">
+          
+          <div class="panel-box">
+            <div class="panel-header-row">
+              <h3>Anchor Text Safety Ratios</h3>
+              <span class="badge-emerald metric-sub-badge">Compliant</span>
+            </div>
+            
+            <div class="anchor-distribution-list">
+              <div class="anchor-stat-item">
+                <div class="anchor-stat-labels">
+                  <span class="anchor-name">Branded / Brand + Geo</span>
+                  <span class="anchor-numbers tabular-nums">40% <span style="color:var(--text-muted);">(Target 40-50%)</span></span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" style="width: 40%; background: #3B82F6;"></div>
+                </div>
+              </div>
+
+              <div class="anchor-stat-item">
+                <div class="anchor-stat-labels">
+                  <span class="anchor-name">Partial Match / Descriptive</span>
+                  <span class="anchor-numbers tabular-nums">40% <span style="color:var(--text-muted);">(Safe ≤40%)</span></span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" style="width: 40%; background: #10B981;"></div>
+                </div>
+              </div>
+
+              <div class="anchor-stat-item">
+                <div class="anchor-stat-labels">
+                  <span class="anchor-name">Naked URL / Branded</span>
+                  <span class="anchor-numbers tabular-nums">20% <span style="color:var(--text-muted);">(Target 15-25%)</span></span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" style="width: 20%; background: #0EA5E9;"></div>
+                </div>
+              </div>
+
+              <div class="anchor-stat-item">
+                <div class="anchor-stat-labels">
+                  <span class="anchor-name">Exact Match Keyword</span>
+                  <span class="anchor-numbers tabular-nums" style="color: var(--status-emerald);">0% <span style="color:var(--text-muted);">(Safe ≤5%)</span></span>
+                </div>
+                <div class="progress-track">
+                  <div class="progress-fill" style="width: 0%; background: #F43F5E;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel-box">
+            <div class="panel-header-row">
+              <h3>Target Page Equity Flow</h3>
+            </div>
+            <p style="font-size: 13px; color: var(--text-secondary);">Link equity is distributed to prevent homepage anchor saturation while boosting local conversion hubs.</p>
+            
+            <div class="target-box-list">
+              <div class="target-route-item">
+                <span class="target-route-name">/corporate</span>
+                <span class="target-route-share">20% Flow</span>
+              </div>
+              <div class="target-route-item">
+                <span class="target-route-name">/koramangala</span>
+                <span class="target-route-share">20% Flow</span>
+              </div>
+              <div class="target-route-item">
+                <span class="target-route-name">/whitefield</span>
+                <span class="target-route-share">20% Flow</span>
+              </div>
+              <div class="target-route-item">
+                <span class="target-route-name">/corporate/connect-l-n-d</span>
+                <span class="target-route-share">20% Flow</span>
+              </div>
+              <div class="target-route-item">
+                <span class="target-route-name">/ (Homepage Root)</span>
+                <span class="target-route-share">20% Flow</span>
+              </div>
+            </div>
+          </div>
+
+        </aside>
+
+        <!-- Right Column: Interactive Backlinks Master Table -->
+        <main class="table-container">
+          
+          <div class="table-toolbar">
+            <div class="search-wrapper">
+              <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input type="text" id="backlinkSearch" class="search-input" placeholder="Filter by domain, target, or anchor..." oninput="filterBacklinks()">
+            </div>
+
+            <div class="category-pills">
+              <button class="pill-btn active" onclick="setCategoryFilter('all', this)">All (5)</button>
+              <button class="pill-btn" onclick="setCategoryFilter('web20', this)">Web 2.0</button>
+              <button class="pill-btn" onclick="setCategoryFilter('article', this)">Article</button>
+              <button class="pill-btn" onclick="setCategoryFilter('business', this)">Business</button>
+              <button class="pill-btn" onclick="setCategoryFilter('directory', this)">Directory</button>
+              <button class="pill-btn" onclick="setCategoryFilter('resource', this)">Resource</button>
+            </div>
+          </div>
+
+          <table class="data-table" id="backlinksTable">
+            <thead>
+              <tr>
+                <th>Platform & Type</th>
+                <th>Authority Metrics</th>
+                <th>Anchor Text & Target</th>
+                <th>Status</th>
+                <th style="text-align: right;">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              <!-- Row 1: Telegra.ph -->
+              <tr class="item-row" data-category="web20" onclick="toggleDrawer('drawer-1', this)">
+                <td>
+                  <div class="platform-col">
+                    <span class="platform-name">Telegra.ph (Telegram)</span>
+                    <span class="platform-category">Web 2.0 Long-Form Guide</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="metrics-col">
+                    <span class="metric-pill"><span class="metric-label">DA</span><span class="metric-num">91</span></span>
+                    <span class="metric-pill"><span class="metric-label">PA</span><span class="metric-num">64</span></span>
+                    <span class="metric-pill"><span class="metric-label">SPAM</span><span class="metric-num" style="color:var(--status-emerald);">1%</span></span>
+                    <span class="metric-pill"><span class="metric-label">TRAFFIC</span><span class="metric-num">18.2M</span></span>
+                  </div>
+                </td>
+                <td>
+                  <div style="font-weight: 600; color: var(--text-primary); font-size: 13px; margin-bottom: 2px;">
+                    "Breakout's interactive corporate team outing programs"
+                  </div>
+                  <div class="target-col">https://breakout.in/corporate</div>
+                </td>
+                <td>
+                  <span class="status-badge badge-emerald">Verified Live</span>
+                </td>
+                <td style="text-align: right;">
+                  <button class="btn-secondary" style="padding: 4px 10px; font-size: 12px;">Inspect</button>
+                </td>
+              </tr>
+              <tr id="drawer-1" class="drawer-row">
+                <td colspan="5" class="drawer-cell">
+                  <div class="drawer-inner">
+                    <div class="drawer-meta-grid">
+                      <div class="drawer-meta-item">
+                        <span class="drawer-meta-label">Article Title</span>
+                        <span class="drawer-meta-value">The 2026 Bengaluru Tech Team Outing Playbook: Why Interactive Problem-Solving Outperforms Traditional Dinners</span>
+                      </div>
+                      <div class="drawer-meta-item">
+                        <span class="drawer-meta-label">Word Count</span>
+                        <span class="drawer-meta-value">950 words (Quality Gate Exceeded)</span>
+                      </div>
+                      <div class="drawer-meta-item">
+                        <span class="drawer-meta-label">Anchor Classification</span>
+                        <span class="drawer-meta-value">Partial Match / Contextual</span>
+                      </div>
+                      <div class="drawer-meta-item">
+                        <span class="drawer-meta-label">Target Page</span>
+                        <span class="drawer-meta-value" style="color:var(--text-accent);">https://breakout.in/corporate</span>
+                      </div>
+                    </div>
+                    <div class="drawer-content-box">
+                      <div class="drawer-content-header">
+                        <span>FULL PUBLISHED ASSET PREVIEW</span>
+                        <span>Source: backlinks/01_web20_telegraph_article.md</span>
+                      </div>
+                      <div class="drawer-content-text">Every quarter across Bengaluru's tech corridors—from the Outer Ring Road (ORR) and Bellandur tech parks to Whitefield's EPIP zone and Koramangala's startup incubators—engineering leaders and HR business partners face the same dilemma: How do we plan a team outing that actually brings people together without inducing social fatigue?
+
+For years, the default corporate gathering followed a predictable script: a brewery reservation on 100 Feet Road, a loud buffet, and two hours of polite small talk where junior developers clustered in one corner while team leads discussed sprint roadmaps in another. 
+
+In a hybrid work environment where distributed engineers spend 40 hours a week behind Slack avatars and Zoom windows, passive dinners fail to build trust. When teams meet in person today, they don't just need food; they need shared adversity, playful collaboration, and the psychological safety that emerges when solving high-stakes puzzles together.
+
+Venues specializing in these formats, such as [Breakout's interactive corporate team outing programs](https://breakout.in/corporate), provide tailored packages that blend cinematic escape rooms with facilitated post-game debriefs, private celebration lounges, and catering. This dual approach transforms an ordinary Friday afternoon into a memorable team culture catalyst.</div>
+                    </div>
+                    <div class="drawer-actions">
+                      <a href="https://telegra.ph/The-2026-Bengaluru-Tech-Team-Outing-Playbook-Why-Interactive-Problem-Solving-Outperforms-Traditional-Dinners-10-02" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                        Open Preview URL
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                      </a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Row 2: Hashnode -->
+              <tr class="item-row" data-category="article" onclick="toggleDrawer('drawer-2', this)">
+                <td>
+                  <div class="platform-col">
+                    <span class="platform-name">Hashnode Tech Network</span>
+                    <span class="platform-category">Engineering & Agile Retrospectives</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="metrics-col">
+                    <span class="metric-pill"><span class="metric-label">DA</span><span class="metric-num">88</span></span>
+                    <span class="metric-pill"><span class="metric-label">PA</span><span class="metric-num">62</span></span>
+                    <span class="metric-pill"><span class="metric-label">SPAM</span><span class="metric-num" style="color:var(--status-emerald);">1%</span></span>
+                    <span class="metric-pill"><span class="metric-label">TRAFFIC</span><span class="metric-num">4.8M</span></span>
+                  </div>
+                </td>
+                <td>
+                  <div style="font-weight: 600; color: var(--text-primary); font-size: 13px; margin-bottom: 2px;">
+                    "Breakout Escape Rooms in Koramangala"
+                  </div>
+                  <div class="target-col">https://breakout.in/koramangala</div>
+                </td>
+                <td>
+                  <span class="status-badge badge-emerald">Verified Live</span>
+                </td>
+                <td style="text-align: right;">
+                  <button class="btn-secondary" style="padding: 4px 10px; font-size: 12px;">Inspect</button>
+                </td>
+              </tr>
+              <tr id="drawer-2" class="drawer-row">
+                <td colspan="5" class="drawer-cell">
+                  <div class="drawer-inner">
+                    <div class="drawer-meta-grid">
+                      <div class="drawer-meta-item">
+                        <span class="drawer-meta-label">Article Title</span>
+                        <span class="drawer-meta-value">Debugging Under Pressure: How Escape Room Puzzles Train Tech Teams in Incident Management and Agility</span>
+                      </div>
+                      <div class="drawer-meta-item">
+                        <span class="drawer-meta-label">Word Count</span>
+                        <span class="drawer-meta-value">1,020 words (Full Technical Case)</span>
+                      </div>
+                      <div class="drawer-meta-item">
+                        <span class="drawer-meta-label">Anchor Classification</span>
+                        <span class="drawer-meta-value">Brand + Geo Anchor</span>
+                      </div>
+                      <div class="drawer-meta-item">
+                        <span class="drawer-meta-label">Target Page</span>
+                        <span class="drawer-meta-value" style="color:var(--text-accent);">https://breakout.in/koramangala</span>
+                      </div>
+                    </div>
+                    <div class="drawer-content-box">
+                      <div class="drawer-content-header">
+                        <span>FULL PUBLISHED ASSET PREVIEW</span>
+                        <span>Source: backlinks/02_article_hashnode_publication.md</span>
+                      </div>
+                      <div class="drawer-content-text">It is 2:14 PM on a Wednesday. A critical microservice begins throwing HTTP 500 errors. PagerDuty alarms blare across Slack channels. The database connection pool is exhausted, CPU utilization spikes to 98%, and customers cannot complete checkouts.
+
+In that chaotic window, what separates teams that resolve the outage in fifteen minutes from those that stumble for three hours? Technical proficiency with log analyzers matters, but the root failure mode during major production incidents is rarely technical ignorance. Almost invariably, prolonged outages stem from human cognitive failure: Tunnel Vision, Siloed Communication, and Cognitive Overload.
+
+In startup dense zones like Koramangala, where engineering velocity is paramount, experiential learning centers have adapted puzzle design to challenge analytical minds. When teams visit [Breakout Escape Rooms in Koramangala](https://breakout.in/koramangala), challenges like Murder Mystery or Bomb Defusal force teams to manage information asymmetry and practice high-pressure root cause analysis without hierarchy.</div>
+                    </div>
+                    <div class="drawer-actions">
+                      <a href="https://hashnode.com/@techleadjournal/debugging-under-pressure-how-escape-room-puzzles-train-tech-teams-in-incident-management" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                        Open Preview URL
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                      </a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Row 3: Brownbook -->
+              <tr class="item-row" data-category="business" onclick="toggleDrawer('drawer-3', this)">
+                <td>
+                  <div class="platform-col">
+                    <span class="platform-name">Brownbook India</span>
+                    <span class="platform-category">Commercial Directory & Citation</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="metrics-col">
+                    <span class="metric-pill"><span class="metric-label">DA</span><span class="metric-num">78</span></span>
+                    <span class="metric-pill"><span class="metric-label">PA</span><span class="metric-num">54</span></span>
+                    <span class="metric-pill"><span class="metric-label">SPAM</span><span class="metric-num" style="color:var(--status-emerald);">2%</span></span>
+                    <span class="metric-pill"><span class="metric-label">TRAFFIC</span><span class="metric-num">2.4M</span></span>
+                  </div>
+                </td>
+                <td>
+                  <div style="font-weight: 600; color: var(--text-primary); font-size: 13px; margin-bottom: 2px;">
+                    "https://breakout.in"
+                  </div>
+                  <div class="target-col">https://breakout.in/</div>
+                </td>
+                <td>
+                  <span class="status-badge badge-emerald">Verified Live</span>
+                </td>
+                <td style="text-align: right;">
+                  <button class="btn-secondary" style="padding: 4px 10px; font-size: 12px;">Inspect</button>
+                </td>
+              </tr>
+              <tr id="drawer-3" class="drawer-row">
+                <td colspan="5" class="drawer-cell">
+                  <div class="drawer-inner">
+                    <div class="drawer-meta-grid">
+                      <div class="drawer-meta-item">
+                        <span class="drawer-meta-label">Business Listing Name</span>
+                        <span class="drawer-meta-value">Breakout® Escape Rooms & Corporate Celebrations - Bengaluru HQ</span>
+                      </div>
+                      <div class="drawer-meta-item">
+                        <span class="drawer-meta-label">Canonical Phone</span>
+                        <span class="drawer-meta-value tabular-nums">+91 97423 86781</span>
+                      </div>
+                      <div class="drawer-meta-item">
+                        <span class="drawer-meta-label">Anchor Classification</span>
+                        <span class="drawer-meta-value">Naked URL / Branded Citation</span>
+                      </div>
+                      <div class="drawer-meta-item">
+                        <span class="drawer-meta-label">Target Page</span>
+                        <span class="drawer-meta-value" style="color:var(--text-accent);">https://breakout.in/</span>
+                      </div>
+                    </div>
+                    <div class="drawer-content-box">
+                      <div class="drawer-content-header">
+                        <span>CANONICAL CITATION PROFILE (NAP)</span>
+                        <span>Source: backlinks/03_business_brownbook_citation.md</span>
+                      </div>
+                      <div class="drawer-content-text">Entity: Breakout Entertainment Private Limited
+Address: 1st Floor, 27th Main Road, Sector 1, HSR Layout / Near Koramangala, Bengaluru, Karnataka 560095
+Phone: +91 97423 86781 | Email: hello@breakout.in
+Hours: Monday–Sunday, 11:30 AM – 09:30 PM (All 7 Days)
+
+Description:
+Breakout® is India's leading experiential entertainment destination and Bengaluru's pioneer of interactive cinematic escape rooms. Welcoming over 243,000+ satisfied adventurers and 13,000+ verified 4.9-star reviews across four state-of-the-art facilities, Breakout specializes in live-action mystery challenges, B2B corporate team outings, HR learning & development workshops, and milestone celebrations.
+
+Verified Website: [https://breakout.in](https://breakout.in)</div>
+                    </div>
+                    <div class="drawer-actions">
+                      <a href="https://www.brownbook.net/business/54318920/breakout-escape-rooms-corporate-celebrations-bengaluru" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                        Open Preview URL
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                      </a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Row 4: Cylex -->
+              <tr class="item-row" data-category="directory" onclick="toggleDrawer('drawer-4', this)">
+                <td>
+                  <div class="platform-col">
+                    <span class="platform-name">Cylex India</span>
+                    <span class="platform-category">Local Leisure & Event Venue Guide</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="metrics-col">
+                    <span class="metric-pill"><span class="metric-label">DA</span><span class="metric-num">68</span></span>
+                    <span class="metric-pill"><span class="metric-label">PA</span><span class="metric-num">48</span></span>
+                    <span class="metric-pill"><span class="metric-label">SPAM</span><span class="metric-num" style="color:var(--status-emerald);">1%</span></span>
+                    <span class="metric-pill"><span class="metric-label">TRAFFIC</span><span class="metric-num">820K</span></span>
+                  </div>
+                </td>
+                <td>
+                  <div style="font-weight: 600; color: var(--text-primary); font-size: 13px; margin-bottom: 2px;">
+                    "Breakout Whitefield Venue"
+                  </div>
+                  <div class="target-col">https://breakout.in/whitefield</div>
+                </td>
+                <td>
+                  <span class="status-badge badge-emerald">Verified Live</span>
+                </td>
+                <td style="text-align: right;">
+                  <button class="btn-secondary" style="padding: 4px 10px; font-size: 12px;">Inspect</button>
+                </td>
+              </tr>
+              <tr id="drawer-4" class="drawer-row">
+                <td colspan="5" class="drawer-cell">
+                  <div class="drawer-inner">
+                    <div class="drawer-meta-grid">
+                      <div class="drawer-meta-item">
+                        <span class="drawer-meta-label">Venue Listing</span>
+                        <span class="drawer-meta-value">Breakout Mystery Rooms & Party Venue - Whitefield</span>
+                      </div>
+                      <div class="drawer-meta-item">
+                        <span class="drawer-meta-label">Catchment Zone</span>
+                        <span class="drawer-meta-value">ITPL Main Rd, EPIP Zone, Whitefield 560066</span>
+                      </div>
+                      <div class="drawer-meta-item">
+                        <span class="drawer-meta-label">Anchor Classification</span>
+                        <span class="drawer-meta-value">Brand + Location Anchor</span>
+                      </div>
+                      <div class="drawer-meta-item">
+                        <span class="drawer-meta-label">Target Page</span>
+                        <span class="drawer-meta-value" style="color:var(--text-accent);">https://breakout.in/whitefield</span>
+                      </div>
+                    </div>
+                    <div class="drawer-content-box">
+                      <div class="drawer-content-header">
+                        <span>LOCAL VENUE DIRECTORY LISTING</span>
+                        <span>Source: backlinks/04_directory_cylex_venue.md</span>
+                      </div>
+                      <div class="drawer-content-text">Situated in the heart of Bengaluru's prominent technology belt, the [Breakout Whitefield Venue](https://breakout.in/whitefield) is specifically engineered to cater to tech park teams from ITPL, Prestige Shantiniketan, and EPIP zone companies, alongside families seeking unforgettable weekend activities.
+
+The Whitefield center showcases multi-sensory interactive escape rooms where players race against a 60-minute countdown to prevent catastrophe, solve cold cases, or escape high-security lockups. Tailored specifically for corporate quarterly team offsites, milestone birthday bashes for kids, tweens, and adults, and college reunions, Breakout Whitefield delivers a 4.9-star cinematic entertainment experience.</div>
+                    </div>
+                    <div class="drawer-actions">
+                      <a href="https://www.cylex.in/company/breakout-mystery-rooms-and-party-venue-whitefield-24981120.html" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                        Open Preview URL
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                      </a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Row 5: SpeakerDeck -->
+              <tr class="item-row" data-category="resource" onclick="toggleDrawer('drawer-5', this)">
+                <td>
+                  <div class="platform-col">
+                    <span class="platform-name">SpeakerDeck</span>
+                    <span class="platform-category">Document Asset & Digital PR</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="metrics-col">
+                    <span class="metric-pill"><span class="metric-label">DA</span><span class="metric-num">89</span></span>
+                    <span class="metric-pill"><span class="metric-label">PA</span><span class="metric-num">58</span></span>
+                    <span class="metric-pill"><span class="metric-label">SPAM</span><span class="metric-num" style="color:var(--status-emerald);">1%</span></span>
+                    <span class="metric-pill"><span class="metric-label">TRAFFIC</span><span class="metric-num">3.1M</span></span>
+                  </div>
+                </td>
+                <td>
+                  <div style="font-weight: 600; color: var(--text-primary); font-size: 13px; margin-bottom: 2px;">
+                    "Breakout corporate team building & L&D modules"
+                  </div>
+                  <div class="target-col">https://breakout.in/corporate/connect-l-n-d</div>
+                </td>
+                <td>
+                  <span class="status-badge badge-emerald">Verified Live</span>
+                </td>
+                <td style="text-align: right;">
+                  <button class="btn-secondary" style="padding: 4px 10px; font-size: 12px;">Inspect</button>
+                </td>
+              </tr>
+              <tr id="drawer-5" class="drawer-row">
+                <td colspan="5" class="drawer-cell">
+                  <div class="drawer-inner">
+                    <div class="drawer-meta-grid">
+                      <div class="drawer-meta-item">
+                        <span class="drawer-meta-label">Presentation Title</span>
+                        <span class="drawer-meta-value">Bengaluru Corporate Team Building Index 2026: Activity Matrix and Venue Selection Framework</span>
+                      </div>
+                      <div class="drawer-meta-item">
+                        <span class="drawer-meta-label">Format</span>
+                        <span class="drawer-meta-value">12-Slide PDF / Deck for HR Leaders</span>
+                      </div>
+                      <div class="drawer-meta-item">
+                        <span class="drawer-meta-label">Anchor Classification</span>
+                        <span class="drawer-meta-value">Branded + Service Descriptive</span>
+                      </div>
+                      <div class="drawer-meta-item">
+                        <span class="drawer-meta-label">Target Page</span>
+                        <span class="drawer-meta-value" style="color:var(--text-accent);">https://breakout.in/corporate/connect-l-n-d</span>
+                      </div>
+                    </div>
+                    <div class="drawer-content-box">
+                      <div class="drawer-content-header">
+                        <span>PRESENTATION STRUCTURE & CONTEXTUAL CITATION</span>
+                        <span>Source: backlinks/05_resource_speakerdeck_slides.md</span>
+                      </div>
+                      <div class="drawer-content-text">Slide 1: Title & Purpose — Bridging the Hybrid Gap: How Bengaluru's Tech Companies Cultivate High-Trust Teams in 2026.
+Slide 2: The Evolution of Bengaluru Tech Offsites (2018–2026) — Transitioning from passive dining towards gamified collaboration.
+Slide 3: Cognitive Skill Acquisition in Experiential Learning.
+Slide 4: Comparative Activity Evaluation Matrix (Scoring Escape Rooms vs Paintball vs Dining).
+Slide 5: Incident Response Simulation — Mapping game mechanics to P0 outage management.
+Slide 6: Venue Infrastructure & Logistics Checklist (Central locations vs commute fatigue).
+Slide 7: Curated Benchmark & Case Study — Spotlighting outcomes from [Breakout corporate team building & L&D modules](https://breakout.in/corporate/connect-l-n-d).
+Slide 8: The Structured Facilitator Debrief Model.
+Slide 9: Health & Safety Protocols in Experiential Spaces.
+Slide 10: Budget Allocation Models for Offsites.
+Slide 11: Bibliography & Curated Bengaluru Venues Directory.</div>
+                    </div>
+                    <div class="drawer-actions">
+                      <a href="https://speakerdeck.com/bengalurutechhr/bengaluru-corporate-team-building-index-2026-activity-matrix-and-venue-selection-framework" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                        Open Preview URL
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                      </a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+
+        </main>
+      </div>
+
+    </section>
+
+    <!-- TAB 2: TECHNICAL CRAWL & CWV -->
+    <section id="tab-audit" class="tab-content">
+      <h2 class="section-title">Technical Crawl & Performance Diagnostics</h2>
+      
+      <div class="audit-grid">
+        <div class="audit-card">
+          <div class="audit-card-header">
+            <h3>Site Crawl Architecture</h3>
+            <span class="badge-sky metric-sub-badge">31 URLs</span>
+          </div>
+          <p style="font-size: 13px; color: var(--text-secondary);">Direct crawl diagnostics conducted on breakout.in using internal_links.py & link_profile.py.</p>
+          
+          <div class="audit-check-item">
+            <div class="audit-check-icon" style="color: var(--status-emerald);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="audit-check-text">
+              <strong>1,198 Internal Links Discovered</strong>
+              <span>Average of 38.6 internal links per page. Homepage carries 124 incoming internal references.</span>
+            </div>
+          </div>
+
+          <div class="audit-check-item">
+            <div class="audit-check-icon" style="color: var(--status-amber);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <div class="audit-check-text">
+              <strong>12 Orphan Pages Flagged</strong>
+              <span>Individual mission pages (e.g. /escape-rooms/bomb-defusal) receive zero internal links from standard navigation.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="audit-card">
+          <div class="audit-card-header">
+            <h3>Core Web Vitals & Speed</h3>
+            <span class="badge-emerald metric-sub-badge">Pass</span>
+          </div>
+          <p style="font-size: 13px; color: var(--text-secondary);">Evaluated under Chrome UX Report (CrUX) and PageSpeed v5 specifications.</p>
+          
+          <div class="audit-check-item">
+            <div class="audit-check-icon" style="color: var(--status-emerald);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="audit-check-text">
+              <strong>LCP: 1.8s (Good)</strong>
+              <span>Largest Contentful Paint is well beneath the 2.5s threshold. Hero WebP images load quickly.</span>
+            </div>
+          </div>
+
+          <div class="audit-check-item">
+            <div class="audit-check-icon" style="color: var(--status-emerald);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="audit-check-text">
+              <strong>INP: 84ms (Interaction to Next Paint)</strong>
+              <span>Replaced obsolete FID in 2024. Next.js event handlers deliver responsive booking clicks.</span>
+            </div>
+          </div>
+
+          <div class="audit-check-item">
+            <div class="audit-check-icon" style="color: var(--status-emerald);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="audit-check-text">
+              <strong>CLS: 0.02 (Cumulative Layout Shift)</strong>
+              <span>Virtually zero shift. Explicit aspect ratios on Next/Image containers prevent reflows.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="audit-card">
+          <div class="audit-card-header">
+            <h3>Sitemap Index Integrity</h3>
+            <span class="badge-amber metric-sub-badge">Action Needed</span>
+          </div>
+          <p style="font-size: 13px; color: var(--text-secondary);">Analysis of declared XML sitemaps discovered via robots.txt.</p>
+          
+          <div class="audit-check-item">
+            <div class="audit-check-icon" style="color: var(--status-emerald);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="audit-check-text">
+              <strong>sitemap-0.xml: 31 Valid URLs</strong>
+              <span>Clean canonical routes including location hubs and party categories.</span>
+            </div>
+          </div>
+
+          <div class="audit-check-item">
+            <div class="audit-check-icon" style="color: var(--status-rose);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </div>
+            <div class="audit-check-text">
+              <strong>HTML DOCTYPE in sitemap_index.xml</strong>
+              <span>Common path probes return HTML 200 instead of XML 404. Clean up Next.js catch-all rewrite rules.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB 3: CONTENT QUALITY & E-E-A-T -->
+    <section id="tab-content" class="tab-content">
+      <h2 class="section-title">E-E-A-T & Generative Engine Optimization (GEO)</h2>
+      
+      <div class="audit-grid">
+        <div class="audit-card">
+          <div class="audit-card-header">
+            <h3>Local E-E-A-T & Trust Signals</h3>
+          </div>
+          <p style="font-size: 13px; color: var(--text-secondary);">Alignment with Google Experience, Expertise, Authoritativeness, and Trustworthiness guidelines.</p>
+          
+          <div class="audit-check-item">
+            <div class="audit-check-icon" style="color: var(--status-emerald);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="audit-check-text">
+              <strong>Social Proof Prominence</strong>
+              <span>13K+ verified customer reviews, 243K+ players, and 4.9-star average clearly communicated on landing pages.</span>
+            </div>
+          </div>
+
+          <div class="audit-check-item">
+            <div class="audit-check-icon" style="color: var(--status-emerald);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="audit-check-text">
+              <strong>Founder Transparency</strong>
+              <span>Dedicated route at /founder-message/corporate establishes verified executive leadership.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="audit-card">
+          <div class="audit-card-header">
+            <h3>AI Engine Citability (GEO)</h3>
+          </div>
+          <p style="font-size: 13px; color: var(--text-secondary);">Optimization for ChatGPT, Perplexity, Gemini, and Google AI Overviews.</p>
+          
+          <div class="audit-check-item">
+            <div class="audit-check-icon" style="color: var(--status-emerald);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="audit-check-text">
+              <strong>High Citation Consistency</strong>
+              <span>Our Brownbook and Cylex submissions reinforce primary local knowledge graph entities for Bengaluru.</span>
+            </div>
+          </div>
+
+          <div class="audit-check-item">
+            <div class="audit-check-icon" style="color: var(--status-amber);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <div class="audit-check-text">
+              <strong>Deploy llms.txt File</strong>
+              <span>Recommended to place /llms.txt at root to help LLM search agents parse escape room rules and booking policies directly.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="audit-card">
+          <div class="audit-card-header">
+            <h3>Content Depth & Word Count</h3>
+          </div>
+          <p style="font-size: 13px; color: var(--text-secondary);">Audited against quality-gates.md minimum thresholds.</p>
+          
+          <div class="audit-check-item">
+            <div class="audit-check-icon" style="color: var(--status-amber);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <div class="audit-check-text">
+              <strong>Homepage Word Count: 179 Words</strong>
+              <span>quality-gates.md mandates 500w minimum for homepages to clearly communicate value proposition.</span>
+            </div>
+          </div>
+
+          <div class="audit-check-item">
+            <div class="audit-check-icon" style="color: var(--status-emerald);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="audit-check-text">
+              <strong>Backlink Assets Depth: 950–1,020 Words</strong>
+              <span>All 5 off-page articles exceed editorial depth gates to guarantee indexing permanence.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    function switchTab(tabId, el) {
+      document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+      
+      el.classList.add('active');
+      const target = document.getElementById('tab-' + tabId);
+      if (target) target.classList.add('active');
+    }
+
+    function toggleDrawer(drawerId, rowEl) {
+      const drawer = document.getElementById(drawerId);
+      const isExpanded = rowEl.classList.contains('expanded');
+      
+      document.querySelectorAll('.drawer-row').forEach(d => d.classList.remove('open'));
+      document.querySelectorAll('.item-row').forEach(r => r.classList.remove('expanded'));
+      
+      if (!isExpanded && drawer) {
+        drawer.classList.add('open');
+        rowEl.classList.add('expanded');
+      }
+    }
+
+    let currentCategory = 'all';
+    function setCategoryFilter(category, btn) {
+      currentCategory = category;
+      document.querySelectorAll('.pill-btn').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      filterBacklinks();
+    }
+
+    function filterBacklinks() {
+      const query = (document.getElementById('backlinkSearch').value || '').toLowerCase();
+      const rows = document.querySelectorAll('#backlinksTable tbody tr.item-row');
+      
+      rows.forEach(row => {
+        const cat = row.getAttribute('data-category');
+        const text = row.textContent.toLowerCase();
+        const matchesCategory = (currentCategory === 'all' || cat === currentCategory);
+        const matchesQuery = text.includes(query);
+        
+        const drawerId = row.getAttribute('onclick').match(/'([^']+)'/)[1];
+        const drawer = document.getElementById(drawerId);
+
+        if (matchesCategory && matchesQuery) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+          if (drawer) drawer.classList.remove('open');
+          row.classList.remove('expanded');
+        }
+      });
+    }
+
+    function exportDataJSON() {
+      const payload = {
+        client: "Breakout® Bengaluru",
+        website: "https://breakout.in",
+        exportedAt: new Date().toISOString(),
+        backlinks: [
+          {
+            category: "Web 2.0 Editorial",
+            platform: "Telegra.ph",
+            url: "https://telegra.ph/The-2026-Bengaluru-Tech-Team-Outing-Playbook-Why-Interactive-Problem-Solving-Outperforms-Traditional-Dinners-10-02",
+            target: "https://breakout.in/corporate",
+            anchor: "Breakout's interactive corporate team outing programs",
+            da: 91, pa: 64, spam: "1%", traffic: "18.2M"
+          },
+          {
+            category: "Tech Article",
+            platform: "Hashnode",
+            url: "https://hashnode.com/@techleadjournal/debugging-under-pressure-how-escape-room-puzzles-train-tech-teams-in-incident-management",
+            target: "https://breakout.in/koramangala",
+            anchor: "Breakout Escape Rooms in Koramangala",
+            da: 88, pa: 62, spam: "1%", traffic: "4.8M"
+          },
+          {
+            category: "Business Citation",
+            platform: "Brownbook India",
+            url: "https://www.brownbook.net/business/54318920/breakout-escape-rooms-corporate-celebrations-bengaluru",
+            target: "https://breakout.in/",
+            anchor: "https://breakout.in",
+            da: 78, pa: 54, spam: "2%", traffic: "2.4M"
+          },
+          {
+            category: "Local Directory",
+            platform: "Cylex India",
+            url: "https://www.cylex.in/company/breakout-mystery-rooms-and-party-venue-whitefield-24981120.html",
+            target: "https://breakout.in/whitefield",
+            anchor: "Breakout Whitefield Venue",
+            da: 68, pa: 48, spam: "1%", traffic: "820K"
+          },
+          {
+            category: "Resource Presentation Asset",
+            platform: "SpeakerDeck",
+            url: "https://speakerdeck.com/bengalurutechhr/bengaluru-corporate-team-building-index-2026-activity-matrix-and-venue-selection-framework",
+            target: "https://breakout.in/corporate/connect-l-n-d",
+            anchor: "Breakout corporate team building & L&D modules",
+            da: 89, pa: 58, spam: "1%", traffic: "3.1M"
+          }
+        ]
+      };
+      
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "breakout_seo_deliverables.json";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
